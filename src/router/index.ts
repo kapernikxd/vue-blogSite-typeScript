@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import LoginPage from "../views/LoginPage.vue";
 import PageNotFound from "../views/PageNotFound.vue";
+import Article from "../views/ArticlePage.vue";
 
 Vue.use(VueRouter);
 
@@ -17,6 +18,12 @@ const routes: Array<RouteConfig> = [
     path: "/",
     name: "Home",
     component: Home,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: "/post/:id",
+    name: "Article",
+    component: Article,
     meta: { requiresAuth: true }
   },
   {
@@ -39,15 +46,17 @@ const router = new VueRouter({
 
 // router.beforeEach((to, from, next) => {
 //   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     const authUser = JSON.parse(window.localStorage.getItem('currentUser') || '{}');
+//     const authUser = JSON.parse(
+//       window.localStorage.getItem("currentUser") || "{}"
+//     );
 //     if (authUser && authUser.accessToken) {
 //       next();
 //     } else {
-//       next({ name: 'Login' });
+//       next({ name: "Login" });
 //     }
 //   } else {
-//     next() // make sure to always call next()!
+//     next(); // make sure to always call next()!
 //   }
-// })
+// });
 
 export default router;
