@@ -11,7 +11,7 @@ const routes: Array<RouteConfig> = [
   {
     path: "/login",
     name: "Login",
-    component: LoginPage,
+    component: LoginPage
   },
   {
     path: "/",
@@ -28,12 +28,12 @@ const routes: Array<RouteConfig> = [
   {
     path: "*",
     name: "404",
-    component: PageNotFound,
-  },
+    component: PageNotFound
+  }
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes
 });
 
