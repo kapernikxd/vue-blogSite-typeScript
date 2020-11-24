@@ -44,19 +44,19 @@ const router = new VueRouter({
   routes
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     const authUser = JSON.parse(
-//       window.localStorage.getItem("currentUser") || "{}"
-//     );
-//     if (authUser && authUser.accessToken) {
-//       next();
-//     } else {
-//       next({ name: "Login" });
-//     }
-//   } else {
-//     next(); // make sure to always call next()!
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    const authUser = JSON.parse(
+      window.localStorage.getItem("currentUser") || "{}"
+    );
+    if (authUser && authUser.accessToken) {
+      next();
+    } else {
+      next({ name: "Login" });
+    }
+  } else {
+    next(); // make sure to always call next()!
+  }
+});
 
 export default router;
